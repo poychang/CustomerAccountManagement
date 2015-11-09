@@ -18,7 +18,11 @@ namespace CustomerAccountManagement.Controllers
         public ActionResult Index()
         {
             var 客戶聯絡人 = db.客戶聯絡人.Include(客 => 客.客戶資料);
-            return View(客戶聯絡人.ToList());
+            var data = from p in 客戶聯絡人
+                       where p.是否已刪除 != true
+                       select p;
+            //return View(客戶聯絡人.ToList());
+            return View(data);
         }
 
         // GET: 客戶聯絡人/Details/5
@@ -39,7 +43,9 @@ namespace CustomerAccountManagement.Controllers
         // GET: 客戶聯絡人/Create
         public ActionResult Create()
         {
-            ViewBag.客戶Id = new SelectList(db.客戶資料, "Id", "客戶名稱");
+            var data = from p in db.客戶資料 where p.是否已刪除 != true select p;
+            //ViewBag.客戶Id = new SelectList(db.客戶資料.f, "Id", "客戶名稱");
+            ViewBag.客戶Id = new SelectList(data, "Id", "客戶名稱");
             return View();
         }
 
@@ -56,8 +62,9 @@ namespace CustomerAccountManagement.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.客戶Id = new SelectList(db.客戶資料, "Id", "客戶名稱", 客戶聯絡人.客戶Id);
+            var data = from p in db.客戶資料 where p.是否已刪除 != true select p;
+            //ViewBag.客戶Id = new SelectList(db.客戶資料, "Id", "客戶名稱", 客戶聯絡人.客戶Id);
+            ViewBag.客戶Id = new SelectList(data, "Id", "客戶名稱", 客戶聯絡人.客戶Id);
             return View(客戶聯絡人);
         }
 
@@ -115,7 +122,8 @@ namespace CustomerAccountManagement.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             客戶聯絡人 客戶聯絡人 = db.客戶聯絡人.Find(id);
-            db.客戶聯絡人.Remove(客戶聯絡人);
+            //db.客戶聯絡人.Remove(客戶聯絡人);
+            客戶聯絡人.是否已刪除 = true;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

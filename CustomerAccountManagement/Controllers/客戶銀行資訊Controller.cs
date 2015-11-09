@@ -18,7 +18,11 @@ namespace CustomerAccountManagement.Controllers
         public ActionResult Index()
         {
             var 客戶銀行資訊 = db.客戶銀行資訊.Include(客 => 客.客戶資料);
-            return View(客戶銀行資訊.ToList());
+            var data = from p in 客戶銀行資訊
+                       where p.是否已刪除 != true
+                       select p;
+            //return View(客戶銀行資訊.ToList());
+            return View(data);
         }
 
         // GET: 客戶銀行資訊/Details/5
@@ -39,7 +43,8 @@ namespace CustomerAccountManagement.Controllers
         // GET: 客戶銀行資訊/Create
         public ActionResult Create()
         {
-            ViewBag.客戶Id = new SelectList(db.客戶資料, "Id", "客戶名稱");
+            var data = from p in db.客戶資料 where p.是否已刪除 != true select p;
+            ViewBag.客戶Id = new SelectList(data, "Id", "客戶名稱");
             return View();
         }
 
@@ -56,8 +61,9 @@ namespace CustomerAccountManagement.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.客戶Id = new SelectList(db.客戶資料, "Id", "客戶名稱", 客戶銀行資訊.客戶Id);
+            var data = from p in db.客戶資料 where p.是否已刪除 != true select p;
+            //ViewBag.客戶Id = new SelectList(db.客戶資料, "Id", "客戶名稱", 客戶銀行資訊.客戶Id);
+            ViewBag.客戶Id = new SelectList(data, "Id", "客戶名稱", 客戶銀行資訊.客戶Id);
             return View(客戶銀行資訊);
         }
 
@@ -115,7 +121,8 @@ namespace CustomerAccountManagement.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             客戶銀行資訊 客戶銀行資訊 = db.客戶銀行資訊.Find(id);
-            db.客戶銀行資訊.Remove(客戶銀行資訊);
+            //db.客戶銀行資訊.Remove(客戶銀行資訊);
+            客戶銀行資訊.是否已刪除 = true;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
