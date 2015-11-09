@@ -43,6 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -167,6 +169,36 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>客戶資料.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vw客戶聯絡人及帳戶數量.cs">
+      <DependentUpon>客戶資料.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\客戶聯絡人.cs">
+      <DependentUpon>客戶資料.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\客戶資料.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>客戶資料.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\客戶資料.cs">
+      <DependentUpon>客戶資料.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\客戶資料.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>客戶資料.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\客戶資料1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>客戶資料.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\客戶銀行資訊.cs">
+      <DependentUpon>客戶資料.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -181,8 +213,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\客戶資料.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>客戶資料.edmx</DependentUpon>
+      <LastGenOutput>客戶資料.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\客戶資料.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>客戶資料.edmx</DependentUpon>
+      <LastGenOutput>客戶資料1.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="文件\dbo.vw客戶聯絡人及帳戶數量.sql" />
+    <Content Include="文件\客戶聯絡人及帳戶數量_查詢SQL.sql" />
+    <EntityDeploy Include="Models\客戶資料.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>客戶資料.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\客戶資料.edmx.diagram">
+      <DependentUpon>客戶資料.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -232,7 +283,9 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="文件\Day2作業_ASP.NET MVC 5 開發實戰.md" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
