@@ -15,13 +15,20 @@ namespace CustomerAccountManagement.Controllers
         private 客戶資料Entities db = new 客戶資料Entities();
 
         // GET: 客戶銀行資訊
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
-            var 客戶銀行資訊 = db.客戶銀行資訊.Include(客 => 客.客戶資料);
-            var data = from p in 客戶銀行資訊
-                       where p.是否已刪除 != true
-                       select p;
-            //return View(客戶銀行資訊.ToList());
+            var data = db.客戶銀行資訊.AsQueryable();
+            if (!String.IsNullOrEmpty(search))
+            {
+                data = data.Where(p => p.是否已刪除 != true);
+                data = data.Where(p => p.銀行名稱.Contains(search));
+                //return View(db.客戶資料.ToList());
+            }
+            else
+            {
+                data = data.Where(p => p.是否已刪除 != true);
+                //return View(db.客戶資料.ToList());
+            }
             return View(data);
         }
 

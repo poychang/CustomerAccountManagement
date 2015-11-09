@@ -4,11 +4,26 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<div style="padding:20px 10px 5px 10px;">
+    <ul class="nav nav-pills" style="float:left;">
+        <li role="presentation" class="active">
+            @Html.ActionLink("客戶聯絡人清單", "Index", "客戶聯絡人")
+        </li>
+        <li role="presentation">
+            @Html.ActionLink("新增", "Create")
+        </li>
+    </ul>
+    <ul class="nav nav-pills" style="float:right;">
+        <li role="presentation">
+            @using (Html.BeginForm())
+            {
+                <input type="text" name="search" value="" placeholder="請輸入關鍵字..." />
+                <input type="submit" value="搜尋" class="btn btn-default" />
+            }
+        </li>
+    </ul>
+</div>
+<br /><br /><br />
 <table class="table">
     <tr>
         <th>
