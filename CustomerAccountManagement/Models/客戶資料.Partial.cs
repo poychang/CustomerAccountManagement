@@ -18,6 +18,7 @@ namespace CustomerAccountManagement.Models
         [Required]
         public string 客戶名稱 { get; set; }
         
+        [TaxId]
         [StringLength(8, ErrorMessage="欄位長度不得大於 8 個字元")]
         [Required]
         public string 統一編號 { get; set; }
@@ -32,6 +33,7 @@ namespace CustomerAccountManagement.Models
         [StringLength(100, ErrorMessage="欄位長度不得大於 100 個字元")]
         public string 地址 { get; set; }
         
+        [EmailAddress(ErrorMessage="請檢查email格式")]
         [StringLength(250, ErrorMessage="欄位長度不得大於 250 個字元")]
         public string Email { get; set; }
         public Nullable<bool> 是否已刪除 { get; set; }

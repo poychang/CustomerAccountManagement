@@ -178,12 +178,14 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Attribute\MobileAttribute.cs" />
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>客戶資料.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.Partial.cs">
       <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Attribute\TaxIdAttribute.cs" />
     <Compile Include="Models\vw客戶聯絡人及帳戶數量.cs">
       <DependentUpon>客戶資料.tt</DependentUpon>
     </Compile>
@@ -341,6 +343,7 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
