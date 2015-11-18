@@ -177,9 +177,29 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EFRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EFUnitOfWork.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\IRepository.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IUnitOfWork.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Attribute\MobileAttribute.cs" />
+    <Compile Include="Models\RepositoryHelper.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RepositoryIQueryableExtensions.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>客戶資料.tt</DependentUpon>
     </Compile>
@@ -187,17 +207,26 @@
       <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Attribute\TaxIdAttribute.cs" />
+    <Compile Include="Models\sysdiagramsRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\vw客戶聯絡人及帳戶數量.cs">
       <DependentUpon>客戶資料.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vw客戶聯絡人及帳戶數量.Partial.cs">
       <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\vw客戶聯絡人及帳戶數量Repository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\客戶聯絡人.cs">
       <DependentUpon>客戶資料.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\客戶聯絡人.Partial.cs">
       <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\客戶聯絡人Repository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\客戶資料.Context.cs">
       <AutoGen>True</AutoGen>
@@ -220,11 +249,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>客戶資料.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\客戶資料Repository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\客戶銀行資訊.cs">
       <DependentUpon>客戶資料.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\客戶銀行資訊.Partial.cs">
       <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\客戶銀行資訊Repository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -243,6 +278,10 @@
     <Content Include="Models\EFGeneratePartialClass.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EFGeneratePartialClass.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\IRepository.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IRepository.cs</LastGenOutput>
     </Content>
     <Content Include="Models\客戶資料.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -333,6 +372,7 @@
     <Content Include="Views\vw客戶聯絡人及帳戶數量\Details.cshtml" />
     <Content Include="Views\vw客戶聯絡人及帳戶數量\Edit.cshtml" />
     <Content Include="Views\vw客戶聯絡人及帳戶數量\Index.cshtml" />
+    <Content Include="文件\Day4作業_ASP.NET MVC 5 開發實戰.md" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
