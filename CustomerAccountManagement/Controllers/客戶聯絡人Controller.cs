@@ -65,12 +65,13 @@ namespace CustomerAccountManagement.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 db.客戶聯絡人.Add(客戶聯絡人);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            var data = from p in db.客戶資料 where p.是否已刪除 != true select p;
             //ViewBag.客戶Id = new SelectList(db.客戶資料, "Id", "客戶名稱", 客戶聯絡人.客戶Id);
+            var data = from p in db.客戶資料 where p.是否已刪除 != true select p;
             ViewBag.客戶Id = new SelectList(data, "Id", "客戶名稱", 客戶聯絡人.客戶Id);
             return View(客戶聯絡人);
         }
