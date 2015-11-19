@@ -6,7 +6,38 @@ namespace CustomerAccountManagement.Models
 {   
 	public  class 客戶銀行資訊Repository : EFRepository<客戶銀行資訊>, I客戶銀行資訊Repository
 	{
-
+        public override IQueryable<客戶銀行資訊> All()
+        {
+            return base.All().Where(p => p.是否已刪除 != true);
+        }
+        public IQueryable<客戶銀行資訊> All(bool isGetAll)
+        {
+            if (isGetAll)
+            {
+                return base.All();
+            }
+            else
+            {
+                return this.All();
+            }
+        }
+        public IQueryable<客戶銀行資訊> Get取得前50筆資料()
+        {
+            var data = this.All().Where(p => p.是否已刪除 != true);
+            return data.Take(50);
+        }
+        public 客戶銀行資訊 GetByID(int? id)
+        {
+            return this.All().FirstOrDefault(p => p.Id == id.Value && p.是否已刪除 != true);
+        }
+        //public 客戶銀行資訊 GetByName(string str)
+        //{
+        //    return this.All().FirstOrDefault(p => p.姓名.Contains(str) && p.是否已刪除 != true);
+        //}
+        //public IQueryable<客戶銀行資訊> SearchByName(string str)
+        //{
+        //    return base.All().Where(p => p. 姓名.Contains(str) && p.是否已刪除 != true);
+        //}
 	}
 
 	public  interface I客戶銀行資訊Repository : IRepository<客戶銀行資訊>

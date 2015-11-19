@@ -15,7 +15,7 @@ namespace CustomerAccountManagement.Models
 
             foreach (var item in data.客戶聯絡人)
             {
-                if (item.Email.Equals(this.Email))
+                if (item.Email.Equals(this.Email) && (bool)!this.是否已刪除)
                 {
                     yield return new ValidationResult("電子郵件重複", new[] { "Email" });
                 }
